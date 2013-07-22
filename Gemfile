@@ -28,4 +28,7 @@ group :assets do
   gem "font-awesome-rails", "~> 3.0.2.0"
 end
 
-gem 'debugger'
+group :development, :test do
+  gem 'debugger',  '~> 1.4.0' # To use debugger
+  gem 'awesome_print'
+end
