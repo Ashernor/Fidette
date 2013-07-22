@@ -1,0 +1,47 @@
+<%= form_for @debt, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :title,"Surnom", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :body, "Rappel du pourquoi du comment", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :body, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :value, "Valeur", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :value, :class => 'text_field' %>€
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date,  :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date, :class => 'date_select' %>
+    </div>
+  </div>
+  <% if params['type'] == "debt" %>
+  <div class="control-group">
+    <%= f.label :creditor_id, "Créditeur",  :class => 'control-label' %>
+    <div class="controls">
+        <%= f.select :creditor_id, User.where("id != #{current_user.id}").collect {|p| [ p.first_name, p.id ] } %>
+    </div>
+  </div>
+  <% else %>
+  <div class="control-group">
+    <%= f.label :debtor_id, "Débiteur",  :class => 'control-label' %>
+    <div class="controls">
+        <%= f.select :debtor_id, User.where("id != #{current_user.id}").collect {|p| [ p.first_name, p.id ] } %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                debts_path, :class => 'btn' %>
+  </div>
+<% end %>

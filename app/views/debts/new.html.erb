@@ -1,0 +1,8 @@
+<div class="page-header">
+  <% if params['type'] == "debt" %>
+    <h1>Nouvelle dette</h1>
+  <% else %>
+      <h1>Nouvelle créance</h1>
+  <% end %>
+</div>
+<%= render :partial => 'form' %>

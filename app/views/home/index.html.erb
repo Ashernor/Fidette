@@ -1,0 +1,7 @@
+<% if current_user %>
+Bienvenue <%= current_user.email %>
+    <%= link_to "Log out", logout_path %>
+<% else %>
+<%= render 'login' %>
+    Pas encore de compte ? <a href="/signup">Je passe par ici pour m'inscrire.</a>
+<% end %>
