@@ -12,12 +12,13 @@
   <dd><%= @debt.value %></dd>
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
   <dd><%= @debt.date %></dd>
-
+  <% unless @debt.creditor.nil? %>
   <dt><strong><%= model_class.human_attribute_name(:creditor) %>:</strong></dt>
   <dd><%= @debt.creditor.first_name %></dd>
-
+  <% else %>
   <dt><strong><%= model_class.human_attribute_name(:debtor) %>:</strong></dt>
   <dd><%= @debt.debtor.first_name %></dd>
+  <% end %>
 </dl>
 
 <div class="form-actions">

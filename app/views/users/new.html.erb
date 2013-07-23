@@ -1,9 +1,9 @@
-<h1>Sign Up</h1>
+<h1>Enregistrement</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => {:class => "form-horizontal"} do |f| %>
     <% if @user.errors.any? %>
         <div class="error_messages">
-          <h2>Form is invalid</h2>
+          <h2>Formulaire invalide</h2>
           <ul>
             <% for message in @user.errors.full_messages %>
                 <li><%= message %></li>
@@ -11,25 +11,39 @@
           </ul>
         </div>
     <% end %>
-    <div class="field">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+    <div class="control-group">
+      <%= f.label :first_name, "Prénom", class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :first_name %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+    <div class="control-group">
+      <%= f.label :last_name, "Nom", class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :last_name %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+    <div class="control-group">
+      <%= f.label :email, class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :email %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+    <div class="control-group">
+      <%= f.label :password, "Mot de passe", class: "control-label" %>
+      <div class="controls">
+        <%= f.password_field :password %>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
+    <div class="control-group">
+      <%= f.label :password_confirmation, "Confirmation mot de passe", class: "control-label" %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation %>
+      </div>
     </div>
-    <div class="actions"><%= f.submit %></div>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit "Envoyer", class:"btn" %>
+      </div>
+    </div>
 <% end %>  

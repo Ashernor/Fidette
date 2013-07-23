@@ -1,3 +1,4 @@
+<% unless @credits.blank? %>
 <div class="page-header">
   <h1>Mes créances</h1>
 </div>
@@ -18,7 +19,7 @@
       <tr>
         <td><%= debt.title %></td>
         <td><%= debt.body %></td>
-        <td><%= debt.value %></td>
+        <td><%= debt.value %>€</td>
         <td><%= debt.date %></td>
         <td><%= debt.debtor.first_name %> <%= debt.debtor.last_name %></td>
         <td>
@@ -30,6 +31,35 @@
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
         </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<% else %>
+<div class="well">
+  Dommage ! Actuellement, personne ne vous doit d'argent, ne vous inquiétez pas ça va venir.
+</div>
+<% end %>
+<h1>Mes créances passées</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Petit surnom</th>
+    <th>Texte de rappel</th>
+    <th>Valeur</th>
+    <th>Date de la créance</th>
+    <th>Nom du débiteur</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @old_credits.each do |debt| %>
+
+      <tr>
+        <td><%= debt.title %></td>
+        <td><%= debt.body %></td>
+        <td><%= debt.value %>€</td>
+        <td><%= debt.date %></td>
+        <td><%= debt.debtor.first_name %> <%= debt.debtor.last_name %></td>
       </tr>
   <% end %>
   </tbody>

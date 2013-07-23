@@ -8,7 +8,7 @@
   <div class="control-group">
     <%= f.label :body, "Rappel du pourquoi du comment", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :body, :class => 'text_area' %>
+      <%= f.text_area :body, :class => 'text_area', rows: 5 %>
     </div>
   </div>
   <div class="control-group">
@@ -28,6 +28,7 @@
     <%= f.label :creditor_id, "Créditeur",  :class => 'control-label' %>
     <div class="controls">
         <%= f.select :creditor_id, User.where("id != #{current_user.id}").collect {|p| [ p.first_name, p.id ] } %>
+        <%= f.hidden_field :debtor_id, value: current_user.id %>
     </div>
   </div>
   <% else %>
@@ -35,13 +36,14 @@
     <%= f.label :debtor_id, "Débiteur",  :class => 'control-label' %>
     <div class="controls">
         <%= f.select :debtor_id, User.where("id != #{current_user.id}").collect {|p| [ p.first_name, p.id ] } %>
+        <%= f.hidden_field :creditor_id, value: current_user.id %>
     </div>
   </div>
   <% end %>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+    <%= f.submit "Créer", :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => "Annuler"),
                 debts_path, :class => 'btn' %>
   </div>
 <% end %>

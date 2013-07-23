@@ -9,6 +9,10 @@ Fidette::Application.routes.draw do
 
   root :to => 'home#index'
 
-  resources :debts
+  resources :debts do
+    member do
+      put :solve
+    end
+  end
 
 end

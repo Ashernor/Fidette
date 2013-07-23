@@ -1,10 +1,5 @@
-<% if params[:creditor] %>
+<% if params["type"] == "creditor" %>
     <%= render 'creditor' %>
 <% else %>
     <%= render 'debtor' %>
 <% end %>
-
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_debt_path,
-            :class => 'btn btn-primary' %>

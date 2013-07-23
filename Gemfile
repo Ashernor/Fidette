@@ -22,7 +22,7 @@ group :assets do
   gem "compass-rails", "~> 1.0.3"
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-  gem 'bootstrap-sass-rails', "~> 2.2.2" # https://github.com/yabawock/bootstrap-sass-rails
+  gem 'bootstrap-sass-rails'
   gem 'jquery-ui-rails', "~> 2.0.2"
   gem "chosen-rails", "~> 0.9.8.3"
   gem "font-awesome-rails", "~> 3.0.2.0"

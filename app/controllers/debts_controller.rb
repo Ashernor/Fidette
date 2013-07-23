@@ -1,11 +1,14 @@
+# encoding: utf-8
 class DebtsController < ApplicationController
   # GET /debts
   # GET /debts.json
   before_filter :require_login
 
   def index
-    @debts = Debt.where("debtor_id = ?", current_user.id)
-    @credits = Debt.where("creditor_id = ?", current_user.id)
+    @debts = Debt.unpaid.where("debtor_id = ?", current_user.id)
+    @credits = Debt.unpaid.where("creditor_id = ?", current_user.id)
+    @old_debts = Debt.paid.where("debtor_id = ?", current_user.id)
+    @old_credits = Debt.paid.where("creditor_id = ?", current_user.id)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @debts }
@@ -45,7 +48,7 @@ class DebtsController < ApplicationController
     @debt = Debt.new(params[:debt])
     respond_to do |format|
       if @debt.save
-        format.html { redirect_to @debt, notice: 'Debt was successfully created.' }
+        format.html { redirect_to @debt, notice: 'La dette a bien été créer' }
         format.json { render json: @debt, status: :created, location: @debt }
       else
         format.html { render action: "new" }
@@ -61,7 +64,7 @@ class DebtsController < ApplicationController
 
     respond_to do |format|
       if @debt.update_attributes(params[:debt])
-        format.html { redirect_to @debt, notice: 'Debt was successfully updated.' }
+        format.html { redirect_to @debt, notice: 'La dette a bien été mise à jour.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -81,4 +84,20 @@ class DebtsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # PUT /debts/1
+  # PUT /debts/1.json
+  def solve
+    @debt = Debt.find(params[:id])
+    respond_to do |format|
+      if @debt.update_attributes(:is_paid=>true)
+        format.html { redirect_to @debt, notice: 'La dette a bien été mise à jour.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @debt.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 end

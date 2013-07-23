@@ -1,17 +1,28 @@
-<h1>Log in</h1>
+<h1>Connexion</h1>
 
-<%= form_tag sessions_path do %>
-    <div class="field">
-      <%= label_tag :email %>
-      <%= text_field_tag :email, params[:email] %>
+<%= form_tag sessions_path, :class => "form-horizontal" do %>
+    <div class="control-group">
+      <%= label_tag :email, "email", class: "control-label" %>
+      <div class="controls">
+        <%= text_field_tag :email, params[:email] %>
+      </div>
     </div>
-    <div class="field">
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
+    <div class="control-group">
+      <%= label_tag :password, "Mot de passe", class: "control-label" %>
+      <div class="controls">
+        <%= password_field_tag :password %>
+      </div>
     </div>
-    <div class="field">
-      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-      <%= label_tag :remember_me %>
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+            <%= check_box_tag :remember_me, 1, params[:remember_me] %> Se souvenir de moi
+        </label>
+        <%= submit_tag "Se connecter", class: "btn" %>
+      </div>
     </div>
-    <div class="actions"><%= submit_tag "Log in" %></div>
 <% end %>
+
+<div class="well">
+  Pas encore de compte ? <a href="/signup">Je passe par ici pour m'inscrire.</a>
+</div>

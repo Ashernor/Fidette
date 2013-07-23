@@ -165,7 +165,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bootstrap-sass-rails (~> 2.2.2)
+  bootstrap-sass-rails
   chosen-rails (~> 0.9.8.3)
   coffee-rails (~> 3.2.1)
   compass-rails (~> 1.0.3)

@@ -1,7 +1,22 @@
 <% if current_user %>
-Bienvenue <%= current_user.email %>
-    <%= link_to "Log out", logout_path %>
+    <div class="alert notice alert-info" data-alert="alert">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      Bienvenue <%= current_user.email %>
+    </div>
+    <div class="row-fluid home_box">
+        <div class="well span4">
+          <div class="ghost"></div>
+          <p>Actuellement vous devez <%= current_user.amount_owed %> €</p>
+        </div>
+        <div class="well span4">
+          <div class="pacman"></div>
+          <p>Actuellement on vous doit x €</p>
+        </div>
+        <div class="well span4">
+          <div class="triforce"></div>
+          <p>Depuis votre inscription <%= current_user.total_amount_owed %> €</p>
+        </div>
+    </div>
 <% else %>
 <%= render 'login' %>
-    Pas encore de compte ? <a href="/signup">Je passe par ici pour m'inscrire.</a>
 <% end %>
