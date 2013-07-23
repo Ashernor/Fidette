@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1b58eb4-e28f-4ea0-821d-44cb1c7e74dd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
     </list>
     <ignored path="Fidette.iws" />
@@ -30,6 +29,7 @@
     <file path="/user.rb" changelist="e1b58eb4-e28f-4ea0-821d-44cb1c7e74dd" time="1374596272702" ignored="false" />
     <file path="/20130720133813_add_state_to_debts.rb" changelist="e1b58eb4-e28f-4ea0-821d-44cb1c7e74dd" time="1374596053434" ignored="false" />
     <file path="/application.rb" changelist="e1b58eb4-e28f-4ea0-821d-44cb1c7e74dd" time="1374617029954" ignored="false" />
+    <file path="/production.rb" changelist="e1b58eb4-e28f-4ea0-821d-44cb1c7e74dd" time="1374617741094" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,19 +85,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/application.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="4" selection-start="2866" selection-end="2866" vertical-scroll-proportion="0.77548003">
+            <state line="62" column="4" selection-start="2866" selection-end="2866" vertical-scroll-proportion="-17.26923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="production.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="35" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
+            <state line="17" column="30" selection-start="639" selection-end="639" vertical-scroll-proportion="0.45945945">
               <folding />
             </state>
           </provider>
@@ -171,8 +171,8 @@
         <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/config/environments/production.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/config/environments/production.rb" />
       </list>
     </option>
   </component>
@@ -228,6 +228,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Fidette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fidette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Fidette" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1030,16 +1044,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
+    <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="35" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0">
+        <state line="62" column="4" selection-start="2866" selection-end="2866" vertical-scroll-proportion="-17.26923">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
+    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="4" selection-start="2866" selection-end="2866" vertical-scroll-proportion="0.77548003">
+        <state line="17" column="30" selection-start="639" selection-end="639" vertical-scroll-proportion="0.45945945">
           <folding />
         </state>
       </provider>
