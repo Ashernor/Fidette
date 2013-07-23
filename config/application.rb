@@ -59,6 +59,8 @@ module Fidette
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.assets.precompile += %w[ *.png *.jpeg *.jpg *.gif ]
+
     # Needed for Heroku - in this file, not production.rb (not taken into account)
     # Also needed: https://devcenter.heroku.com/articles/labs-user-env-compile
     config.assets.initialize_on_precompile = false
