@@ -5,15 +5,20 @@
     </div>
     <div class="row-fluid home_box">
         <div class="well span4">
-          <div class="ghost"></div>
+          <div id="space-invader"></div>
           <p>Actuellement vous devez <%= current_user.amount_owed %> €</p>
         </div>
         <div class="well span4">
-          <div class="pacman"></div>
+          <div class="pacman-container">
+            <div class="pacman-body"></div>
+            <div class="pacman-mouth">
+              <div class="pacman"></div>
+            </div>
+          </div>
           <p>Actuellement on vous doit x €</p>
         </div>
         <div class="well span4">
-          <div class="triforce"></div>
+
           <p>Depuis votre inscription <%= current_user.total_amount_owed %> €</p>
         </div>
     </div>

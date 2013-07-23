@@ -15,17 +15,6 @@ class DebtsController < ApplicationController
     end
   end
 
-  # GET /debts/1
-  # GET /debts/1.json
-  def show
-    @debt = Debt.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @debt }
-    end
-  end
-
   # GET /debts/new
   # GET /debts/new.json
   def new
@@ -48,8 +37,8 @@ class DebtsController < ApplicationController
     @debt = Debt.new(params[:debt])
     respond_to do |format|
       if @debt.save
-        format.html { redirect_to @debt, notice: 'La dette a bien été créer' }
-        format.json { render json: @debt, status: :created, location: @debt }
+        format.html { redirect_to debts_url, notice: 'La dette a bien été créer' }
+        format.json { render json: @debt, status: :created, location: @debts }
       else
         format.html { render action: "new" }
         format.json { render json: @debt.errors, status: :unprocessable_entity }
@@ -64,7 +53,7 @@ class DebtsController < ApplicationController
 
     respond_to do |format|
       if @debt.update_attributes(params[:debt])
-        format.html { redirect_to @debt, notice: 'La dette a bien été mise à jour.' }
+        format.html { redirect_to debts_path, notice: 'La dette a bien été mise à jour.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -91,7 +80,7 @@ class DebtsController < ApplicationController
     @debt = Debt.find(params[:id])
     respond_to do |format|
       if @debt.update_attributes(:is_paid=>true)
-        format.html { redirect_to @debt, notice: 'La dette a bien été mise à jour.' }
+        format.html { redirect_to debts_url, notice: 'La dette a bien été mise à jour.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723144747) do
+ActiveRecord::Schema.define(:version => 20130723223624) do
 
   create_table "debts", :force => true do |t|
     t.string   "title"
@@ -20,10 +20,20 @@ ActiveRecord::Schema.define(:version => 20130723144747) do
     t.date     "date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.boolean  "is_paid",     default: false
+    t.boolean  "is_paid"
     t.integer  "creditor_id"
     t.integer  "debtor_id"
   end
+
+  create_table "ideas", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "ideas", ["user_id"], :name => "index_ideas_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                        :null => false
