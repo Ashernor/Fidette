@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <b>Titre :</b>
   <%= @idea.title %>
 </p>
 
 <p>
-  <b>Body:</b>
+  <b>Contenu :</b>
   <%= @idea.body %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @idea.user %>
+  <b>User :</b>
+  <%= @idea.user.first_name %>
 </p>
 
 
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>
+<%= link_to 'Editer', edit_idea_path(@idea) if @idea.user == current_user  %> |
+<%= link_to 'Retour aux idées', ideas_path %>

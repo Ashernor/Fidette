@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(:version => 20130723223624) do
     t.text     "body"
     t.decimal  "value"
     t.date     "date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.boolean  "is_paid"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "is_paid",     :default => false
     t.integer  "creditor_id"
     t.integer  "debtor_id"
   end

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name
 
   validates_confirmation_of :password
-  validates_presence_of :email, :first_name, :last_name
+  validates_presence_of :email, :first_name, :last_name, :first_name, :last_name
   validates_uniqueness_of :email
 
   has_many :debts, :class_name => "Debt", :foreign_key => :debtor_id
@@ -18,8 +18,18 @@ class User < ActiveRecord::Base
   end
 
   def total_amount_owed
-    total_current_owed = Debt.unpaid.where("debtor_id = ?", self.id).map {|s| s['value']}.reduce(0, :+)
+    total_current_owed = Debt.where("debtor_id = ?", self.id).map {|s| s['value']}.reduce(0, :+)
     return total_current_owed
+  end
+
+  def credit_line
+    credit_line = Debt.unpaid.where("creditor_id = ?", self.id).map {|s| s['value']}.reduce(0, :+)
+    return credit_line
+  end
+
+  def total_credit_line
+    total_credit_line = Debt.unpaid.where("creditor_id = ?", self.id).map {|s| s['value']}.reduce(0, :+)
+    return total_credit_line
   end
 
 end

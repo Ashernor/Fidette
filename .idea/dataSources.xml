@@ -4,8 +4,8 @@
     <data-source source="LOCAL" name="Rails Fidette: test" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="7e088667-454f-4907-ac57-79fdad97210f">
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:fidette_test</jdbc-url>
-      <user-name>ashernor</user-name>
-      <user-password>dfcbdf98df9fdf9adf9fdf9bdf93df92df92</user-password>
+      <user-name>fidzup</user-name>
+      <user-password>dfccdfc3dfcedfd0dfdfdfda</user-password>
       <libraries>
         <library>
           <url>file://$USER_HOME$/Library/Preferences/RubyMine40/jdbc-drivers/postgresql-driver-license.txt</url>
@@ -18,8 +18,8 @@
     <data-source source="LOCAL" name="Rails Fidette: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="63a80060-216f-44c2-b031-5804afd4d560">
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:fidette_dev</jdbc-url>
-      <user-name>ashernor</user-name>
-      <user-password>dfcbdf98df9fdf9adf9fdf9bdf93df92df92</user-password>
+      <user-name>fidzup</user-name>
+      <user-password>dfccdfc3dfcedfd0dfdfdfda</user-password>
       <libraries>
         <library>
           <url>file://$USER_HOME$/Library/Preferences/RubyMine40/jdbc-drivers/postgresql-driver-license.txt</url>
@@ -32,8 +32,8 @@
     <data-source source="LOCAL" name="Rails Fidette: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="787aa441-fec5-463f-87d0-f50fff736793">
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:fidette_prod</jdbc-url>
-      <user-name>ashernor</user-name>
-      <user-password>dfcbdf98df9fdf9adf9fdf9bdf93df92df92</user-password>
+      <user-name>fidzup</user-name>
+      <user-password>dfccdfc3dfcedfd0dfdfdfda</user-password>
       <libraries>
         <library>
           <url>file://$USER_HOME$/Library/Preferences/RubyMine40/jdbc-drivers/postgresql-driver-license.txt</url>

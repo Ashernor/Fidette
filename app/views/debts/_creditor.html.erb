@@ -25,11 +25,10 @@
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_debt_path(debt), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      debt_path(debt),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+          <%= link_to t('.edit', :default => "Payer" ),
+                      solve_debt_path(debt),
+                      :method => :put,
+                      :class => 'btn btn-mini' %>
         </td>
       </tr>
   <% end %>

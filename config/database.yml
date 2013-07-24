@@ -8,8 +8,8 @@ development:
   encoding: utf8
   reconnect: false
   database: fidette_dev
-  username: ashernor
-  password: a25051988
+  username: fidzup
+  password: fidzup
 
 
 # Warning: The database defined as "test" will be erased and
@@ -20,8 +20,8 @@ test:
   encoding: utf8
   reconnect: false
   database: fidette_test
-  username: ashernor
-  password: a25051988
+  username: fidzup
+  password: fidzup
 
 
 production:
@@ -29,6 +29,6 @@ production:
   encoding: utf8
   reconnect: false
   database: fidette_prod
-  username: ashernor
-  password: a25051988
+  username: fidzup
+  password: fidzup
 

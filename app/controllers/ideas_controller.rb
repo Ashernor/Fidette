@@ -27,7 +27,6 @@ class IdeasController < ApplicationController
   # GET /ideas/new.json
   def new
     @idea = Idea.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @idea }
@@ -43,7 +42,7 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = Idea.new(params[:idea])
-
+    @idea.user_id = current_user.id
     respond_to do |format|
       if @idea.save
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
