@@ -24,7 +24,7 @@
         <td><%= debt.debtor.first_name %> <%= debt.debtor.last_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_debt_path(debt), :class => 'btn btn-mini' %>
+                      edit_debt_path(debt, type:"credit"), :class => 'btn btn-mini' %>
           <%= link_to t('.edit', :default => "Solder" ),
                       solve_debt_path(debt),
                       :method => :put,
