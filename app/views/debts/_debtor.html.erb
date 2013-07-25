@@ -28,11 +28,6 @@
                       solve_debt_path(debt),
                       :method => :put,
                       :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => "Supprimer"),
-                      debt_path(debt),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Êtes-vous sur ? Supprimer ce n\'est pas payer')) },
-                      :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
   <% end %>
@@ -61,7 +56,7 @@
         <td><%= debt.body %></td>
         <td><%= debt.value %>€</td>
         <td><%= debt.date %></td>
-        <td><%= debt.creditor.first_name %> <%= debt.debtor.last_name %></td>
+        <td><%= debt.creditor.first_name %> <%= debt.creditor.last_name %></td>
       </tr>
   <% end %>
   </tbody>

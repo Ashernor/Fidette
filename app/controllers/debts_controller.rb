@@ -3,6 +3,7 @@ class DebtsController < ApplicationController
   # GET /debts
   # GET /debts.json
   before_filter :require_login
+  before_filter :set_debt, only: [:edit, :update, :show, :destroy, :solve]
 
   def index
     @debts = Debt.unpaid.where("debtor_id = ?", current_user.id)
@@ -28,7 +29,6 @@ class DebtsController < ApplicationController
 
   # GET /debts/1/edit
   def edit
-    @debt = Debt.find(params[:id])
   end
 
   # POST /debts
@@ -49,8 +49,6 @@ class DebtsController < ApplicationController
   # PUT /debts/1
   # PUT /debts/1.json
   def update
-    @debt = Debt.find(params[:id])
-
     respond_to do |format|
       if @debt.update_attributes(params[:debt])
         format.html { redirect_to debts_path, notice: 'La dette a bien été mise à jour.' }
@@ -65,7 +63,6 @@ class DebtsController < ApplicationController
   # DELETE /debts/1
   # DELETE /debts/1.json
   def destroy
-    @debt = Debt.find(params[:id])
     @debt.destroy
 
     respond_to do |format|
@@ -77,7 +74,6 @@ class DebtsController < ApplicationController
   # PUT /debts/1
   # PUT /debts/1.json
   def solve
-    @debt = Debt.find(params[:id])
     respond_to do |format|
       if @debt.update_attributes(:is_paid=>true)
         format.html { redirect_to debts_url, notice: 'La dette a bien été mise à jour.' }
@@ -87,6 +83,10 @@ class DebtsController < ApplicationController
         format.json { render json: @debt.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def set_debt
+    @debt = current_user.debts.find(params[:id])
   end
 
 end
