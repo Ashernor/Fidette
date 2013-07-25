@@ -74,6 +74,7 @@ class DebtsController < ApplicationController
   # PUT /debts/1
   # PUT /debts/1.json
   def solve
+    @debt = Debt.find(params[:id])
     respond_to do |format|
       if @debt.update_attributes(:is_paid=>true)
         format.html { redirect_to debts_url, notice: 'La dette a bien été mise à jour.' }
@@ -86,7 +87,7 @@ class DebtsController < ApplicationController
   end
 
   def set_debt
-    @debt = current_user.debts.find(params[:id])
+    @debt = Debt.where("debtor_id = #{current_user.id} OR creditor_id = #{current_user.id}").find(params[:id])
   end
 
 end
