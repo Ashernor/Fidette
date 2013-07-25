@@ -15,6 +15,12 @@
   <%= @idea.user.first_name %>
 </p>
 
-
+<% if current_user.email == "thomas@fidzup.com" %>
+    <%= link_to t('.destroy', :default => "Supprimer"),
+                idea_path(@idea),
+                :method => :delete,
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Êtes-vous sur ?')) },
+                :class => 'btn btn-mini btn-danger' %>
+<% end %>
 <%= link_to 'Editer', edit_idea_path(@idea) if @idea.user == current_user  %> |
 <%= link_to 'Retour aux idées', ideas_path %>

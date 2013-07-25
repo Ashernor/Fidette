@@ -37,7 +37,15 @@ class DebtsController < ApplicationController
     @debt = Debt.new(params[:debt])
     respond_to do |format|
       if @debt.save
-        format.html { redirect_to debts_url, notice: 'La dette a bien été créer' }
+        format.html {
+          if @debt.debtor_id == current_user.id
+            redirect_to debts_path(type:"debt")
+            flash[:notice] = 'La dette a bien été créer.'
+          else
+            redirect_to debts_path(type:"creditor")
+            flash[:notice] = 'La créance a bien été créer.'
+          end
+        }
         format.json { render json: @debt, status: :created, location: @debts }
       else
         format.html { render action: "new" }
@@ -51,7 +59,15 @@ class DebtsController < ApplicationController
   def update
     respond_to do |format|
       if @debt.update_attributes(params[:debt])
-        format.html { redirect_to debts_path, notice: 'La dette a bien été mise à jour.' }
+        format.html {
+          if @debt.debtor_id == current_user.id
+            redirect_to debts_path(type:"debt")
+            flash[:notice] = 'La dette a bien été mise à jour.'
+          else
+            redirect_to debts_path(type:"credit")
+            flash[:notice] = 'La créance a bien été mise à jour.'
+          end
+        }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -66,7 +82,15 @@ class DebtsController < ApplicationController
     @debt.destroy
 
     respond_to do |format|
-      format.html { redirect_to debts_url }
+      format.html {
+        if @debt.debtor_id == current_user.id
+          redirect_to debts_path(type:"debt")
+          flash[:notice] = 'La dette a bien été effacée.'
+        else
+          redirect_to debts_path(type:"credit")
+          flash[:notice] = 'La créance a bien été effacée.'
+        end
+      }
       format.json { head :no_content }
     end
   end
@@ -77,7 +101,15 @@ class DebtsController < ApplicationController
     @debt = Debt.find(params[:id])
     respond_to do |format|
       if @debt.update_attributes(:is_paid=>true)
-        format.html { redirect_to debts_url, notice: 'La dette a bien été mise à jour.' }
+        format.html {
+          if @debt.debtor_id == current_user.id
+            redirect_to debts_path(type:"debt")
+            flash[:notice] = 'La dette a bien été soldée.'
+          else
+            redirect_to debts_path(type:"creditor")
+            flash[:notice] = 'La créance a bien été soldée.'
+          end
+        }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
