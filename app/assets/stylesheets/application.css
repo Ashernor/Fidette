@@ -33,3 +33,7 @@ h1 {
     font-size: 14px !important;
     font-weight: normal !important;
 }
+
+.chart {
+    height: 300px;
+}
