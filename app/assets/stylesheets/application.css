@@ -37,3 +37,8 @@ h1 {
 .chart {
     height: 300px;
 }
+
+.chart-wrapper {
+    padding-top: 0 !important;
+}
+.chart-wrapper h2 {font-size: 13px;}

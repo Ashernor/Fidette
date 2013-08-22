@@ -13,4 +13,9 @@ module ApplicationHelper
         type.to_s
     end
   end
+
+  def show_in_euro(amount)
+    number_to_currency(amount, :locale => :fr, :unit => "&euro;", :separator => ",", :delimiter => " ", :format => "%n%u")
+  end
+
 end

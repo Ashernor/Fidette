@@ -1,0 +1,28 @@
+<% content_for(:more_js) do %>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <%= javascript_include_tag "graph/graph" %>
+    <script type="text/javascript">
+        setChartForElements();
+    </script>
+<% end %>
+<% if current_user.amount_owed || current_user.credit_line %>
+    <h1>Rappel des faits</h1>
+    <div class="row-fluid">
+      <div class="span8" class="charts">
+        <div class="chart" id="chart-3"
+             data-values='<%= [@stats.debts_value_by_week, @stats.credits_value_by_week].to_json %>'
+             data-titles='["Dettes","Crédits"]'
+             data-start="<%= @start_date.to_s %>" data-end="<%= @end_date.to_s %>"
+        >
+          <div class="loading"><i class="icon-spinner icon-spin icon-large"></i> <%= t 'pro.layout.loading' %></div>
+        </div>
+      </div>
+      <div class="span4" class="charts">
+        <div class="chart" id="chart-2"
+             data-values='["Débit",<%= current_user.amount_owed %>],["Crédit",<%= current_user.credit_line %>]'
+        >
+          <div class="loading"><i class="icon-spinner icon-spin icon-large"></i> <%= t 'pro.layout.loading' %></div>
+        </div>
+      </div>
+    </div>
+<% end %>

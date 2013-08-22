@@ -1,7 +1,7 @@
 <h1>Les idées</h1>
-<% if @ideas.empty? %>
+<% if @open_ideas.empty? %>
    <div class="well">
-     <p>Il n'y a pas encore d'idées d'améliorations, pourquoi ne pas soumettre la votre ? <%= link_to "J'ai une super idée !", new_idea_path %></p>
+     <p>Il n'y plus d'idées d'améliorations ou de correction d'ouverte, pourquoi ne pas soumettre la votre ? <%= link_to "J'ai une super idée !", new_idea_path, class: "btn btn-mini" %></p>
    </div>
 <% else %>
 <table class="table table-striped">
@@ -12,7 +12,7 @@
     <th>Affichage</th>
   </tr>
 
-<% @ideas.each do |idea| %>
+<% @open_ideas.each do |idea| %>
   <tr>
     <td><%= idea.title %></td>
     <td><%= idea.body %></td>
@@ -22,5 +22,24 @@
 <% end %>
 </table>
 
-<%= link_to 'Nouvelle idée', new_idea_path %>
+<%= link_to 'Nouvelle idée', new_idea_path, class: "btn" %>
 <% end %>
+
+<h1>Les anciennes idées, c'est ici qu'on peut voir le travail accompli</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Titre</th>
+    <th>Contenu</th>
+    <th>Soumis par</th>
+    <th>Affichage</th>
+  </tr>
+
+  <% @solved_ideas.each do |idea| %>
+      <tr>
+        <td><%= idea.title %></td>
+        <td><%= idea.body %></td>
+        <td><%= idea.user.first_name if idea.user %></td>
+        <td><%= link_to 'Voir cette idée', idea %></td>
+      </tr>
+  <% end %>
+</table>

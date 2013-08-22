@@ -12,4 +12,13 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def statistics
+    if current_user
+      @stats                = DebtStats.new({user_id: current_user.id})
+      @start_date           = @stats.start_date
+      @end_date             = @stats.end_date
+    end
+  end
+
 end

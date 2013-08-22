@@ -1,3 +1,4 @@
+# encoding: utf-8
 class IdeasController < ApplicationController
   before_filter :require_login
 
@@ -5,7 +6,8 @@ class IdeasController < ApplicationController
   # GET /ideas.json
   def index
     @ideas = Idea.all
-
+    @open_ideas = Idea.opened
+    @solved_ideas = Idea.solved
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @ideas }
@@ -45,7 +47,7 @@ class IdeasController < ApplicationController
     @idea.user_id = current_user.id
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
+        format.html { redirect_to ideas_url, notice: "L'idée a bien été créer" }
         format.json { render json: @idea, status: :created, location: @idea }
       else
         format.html { render action: "new" }
@@ -61,7 +63,7 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.update_attributes(params[:idea])
-        format.html { redirect_to @idea, notice: 'Idea was successfully updated.' }
+        format.html { redirect_to ideas_url, notice: "L'idée a bien été mise à jour" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,6 +81,16 @@ class IdeasController < ApplicationController
     respond_to do |format|
       format.html { redirect_to ideas_url }
       format.json { head :no_content }
+    end
+  end
+
+  def resolve
+    @debt = Idea.find(params[:id])
+    respond_to do |format|
+      if @debt.update_attributes(:is_solved=>true)
+        format.html {redirect_to ideas_url}
+        format.json {head :no_content}
+      end
     end
   end
 end
