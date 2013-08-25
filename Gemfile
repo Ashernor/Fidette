@@ -3,11 +3,8 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 gem 'rails', '3.2.11'
-
 gem 'pg'
-
 gem "sorcery", "~> 0.8.0"
-
 gem 'thin'
 gem "jquery-datatables-rails", "~> 1.11.1" # Data tables
 gem 'kaminari', "~> 0.14.1"
@@ -29,4 +26,8 @@ end
 group :development, :test do
   gem 'debugger',  '~> 1.4.0' # To use debugger
   gem 'awesome_print'
+end
+
+group :production do
+  gem 'unicorn'
 end
