@@ -14,13 +14,19 @@
   <div class="control-group">
     <%= f.label :value, "Valeur", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :value, :class => 'text_field' %>€
+      <div class="input-append">
+        <%= f.text_field :value, :class => 'text_field' %>
+        <span class="add-on"><i class="icon-euro"></i></span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :date,  :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :date, :class => 'date_select' %>
+      <div class="input-append">
+        <%= f.text_field :date, :class => 'date_select' %>
+        <span class="add-on"><i class="icon-calendar"></i></span>
+      </div>
     </div>
   </div>
   <% if params['type'] == "debt" %>

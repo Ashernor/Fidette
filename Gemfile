@@ -22,7 +22,8 @@ group :assets do
   gem 'bootstrap-sass-rails'
   gem 'jquery-ui-rails', "~> 2.0.2"
   gem "chosen-rails", "~> 0.9.8.3"
-  gem "font-awesome-rails", "~> 3.0.2.0"
+  gem "font-awesome-rails", "~> 3.2.1.3"
+  gem 'bootstrap-datepicker-rails', "~> 1.1.1.7"
 end
 
 group :development, :test do

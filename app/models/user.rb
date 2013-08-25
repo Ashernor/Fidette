@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def total_credit_line
-    total_credit_line = Debt.unpaid.where("creditor_id = ?", self.id).map {|s| s['value']}.reduce(0, :+)
+    total_credit_line = Debt.where("creditor_id = ?", self.id).map {|s| s['value']}.reduce(0, :+)
     return total_credit_line
   end
 

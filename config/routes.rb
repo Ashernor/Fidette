@@ -7,6 +7,7 @@ Fidette::Application.routes.draw do
   match '/mystatistics' => 'users#statistics', :via => 'get'
 
   resources :sessions
+  resources :users
 
   root :to => 'home#index'
 
