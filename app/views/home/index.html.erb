@@ -81,7 +81,7 @@
              data-titles='["Dettes (en €)","Crédits (en €)"]'
              data-start="<%= @start_date.to_s %>" data-end="<%= @end_date.to_s %>"
         >
-          <div class="loading"><i class="icon-spinner icon-spin icon-large"></i> <%= t 'pro.layout.loading' %></div>
+          <div class="loading"><i class="icon-spinner icon-spin icon-large"></i> <%= t 'layout.loading' %></div>
         </div>
       </div>
       <div class="span4" class="charts">
@@ -89,7 +89,7 @@
         <div class="chart" id="chart-2"
              data-values='["Dettes (en €)",<%= current_user.amount_owed %>],["Crédit (en €)",<%= current_user.credit_line %>]'
         >
-          <div class="loading"><i class="icon-spinner icon-spin icon-large"></i> <%= t 'pro.layout.loading' %></div>
+          <div class="loading"><i class="icon-spinner icon-spin icon-large"></i> <%= t 'layout.loading' %></div>
         </div>
       </div>
     </div>
