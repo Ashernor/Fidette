@@ -6,8 +6,8 @@ class DebtsController < ApplicationController
   before_filter :set_debt, only: [:edit, :update, :show, :destroy, :solve]
 
   def index
-    @debts = Debt.unpaid.where("debtor_id = ?", current_user.id)
-    @credits = Debt.unpaid.where("creditor_id = ?", current_user.id)
+    @debts = Debt.unpaid.where("debtor_id = ?", current_user.id).order("creditor_id")
+    @credits = Debt.unpaid.where("creditor_id = ?", current_user.id).order("debtor_id")
     @old_debts = Debt.paid.where("debtor_id = ?", current_user.id)
     @old_credits = Debt.paid.where("creditor_id = ?", current_user.id)
     respond_to do |format|

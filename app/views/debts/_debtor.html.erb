@@ -18,7 +18,7 @@
       <tr>
         <td><%= debt.title %></td>
         <td><%= debt.body %></td>
-        <td><%= debt.value %>€</td>
+        <td><%= show_in_euro(debt.value) %></td>
         <td><%= debt.date %></td>
         <td><%= debt.creditor.first_name %> <%= debt.creditor.last_name %></td>
         <td>
@@ -33,6 +33,16 @@
       </tr>
   <% end %>
   </tbody>
+  <tfoot>
+  <tr>
+    <td>Total</td>
+    <td></td>
+    <td><%= show_in_euro(@debts.map{|debt| debt.value}.reduce(0, :+)) %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tfoot>
 </table>
 <% else %>
 <div class="well">
@@ -55,10 +65,20 @@
       <tr>
         <td><%= debt.title %></td>
         <td><%= debt.body %></td>
-        <td><%= debt.value %>€</td>
+        <td><%= show_in_euro(debt.value) %></td>
         <td><%= debt.date %></td>
         <td><%= debt.creditor.first_name %> <%= debt.creditor.last_name %></td>
       </tr>
   <% end %>
   </tbody>
+  <tfoot>
+  <tr>
+    <td>Total</td>
+    <td></td>
+    <td><%= show_in_euro(@old_debts.map{|debt| debt.value}.reduce(0, :+)) %></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tfoot>
 </table>
