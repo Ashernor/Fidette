@@ -129,7 +129,7 @@ class DebtsController < ApplicationController
     @debt = Debt.find(params[:id])
     respond_to do |format|
       format.html {
-        UserMailer.warn_creditor_email(@debt.debtor.email, @debt.debtor.first_name, @debt.value, @debt.title).deliver
+        UserMailer.warn_creditor_email(@debt.creditor.email, @debt.debtor.first_name, @debt.value, @debt.title).deliver
         redirect_to debts_path(type:"debt")
         flash[:notice] = 'Le créancier a bien été prévenu'
       }
