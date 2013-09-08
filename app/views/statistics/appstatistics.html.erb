@@ -1,0 +1,78 @@
+<% content_for(:more_js) do %>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <%= javascript_include_tag "graph/graph" %>
+    <script type="text/javascript">
+        setChartForElements();
+    </script>
+<% end %>
+<h1>Statistiques de Fidette</h1>
+<div class="row-fluid">
+  <div class="span6">
+    <h1>Plus grosses dettes en cours</h1>
+    <div class="chart" id="columnChart"
+         data-values='
+         <% @biggesunpaiddebts.each.with_index do |debt, i| %>
+         ["<%= debt.debtor.first_name %>",<%= debt.value %>]<%= ","unless i==@biggesunpaiddebts.length-1 %>
+         <% end %>
+         '
+    >
+      <div class="loading"><i class="icon-spinner icon-spin icon-large"></i> <%= t 'layout.loading' %></div>
+    </div>
+  </div>
+  <div class="span6">
+    <h1>Plus grosses dettes depuis toujours</h1>
+    <div class="chart" id="columnChart2"
+         data-values='
+         <% @biggesunpaiddebts.each.with_index do |debt, i| %>
+         ["<%= debt.debtor.first_name %>",<%= debt.value %>]<%= ","unless i==@biggesunpaiddebts.length-1 %>
+         <% end %>
+         '
+    >
+      <div class="loading"><i class="icon-spinner icon-spin icon-large"></i> <%= t 'layout.loading' %></div>
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <h1>Classement des débiteurs</h1>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Position</th>
+        <th>Nom</th>
+        <th>Combien il doit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @bigdebtorordered.sort_by{|e| -e[:value]}.first(3).each.with_index do |debt, index| %>
+          <tr>
+            <td><%= index+1 %></td>
+            <td><%= debt[:name] %></td>
+            <td><%= show_in_euro(debt[:value]) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="span6">
+    <h1>Classement des créanciers</h1>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Position</th>
+        <th>Nom</th>
+        <th>Combien on lui doit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @bigcreditordered.sort_by{|e| -e[:value]}.first(3).each.with_index do |credit, index| %>
+          <tr>
+            <td><%= index+1 %></td>
+            <td><%= credit[:name] %></td>
+            <td><%= show_in_euro(credit[:value]) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -87,6 +87,9 @@ drawCharts = (chartList, mode) ->
     if (chartId == "chart-2")
       chart = new google.visualization.PieChart($chart[0])
       chart.draw(populatePieChart($chart.data('values'), $chart), graphOptions(titlesAndValues))
+    else if (chartId == "columnChart" || chartId == "columnChart2")
+      chart = new google.visualization.ColumnChart($chart[0])
+      chart.draw(populateColumnChart($chart.data('values'), $chart), graphOptions(titlesAndValues))
     else
       chart = new google.visualization.AreaChart($chart[0])
       chart.draw(populateChart(titlesAndValues, mode, $chart), graphOptions(titlesAndValues))
@@ -126,6 +129,17 @@ populatePieChart = (listOfTitlesAndValues, chartElement) ->
 
   data.addColumn('string', 'Type');
   data.addColumn('number', 'Montant');
+  for e in listOfTitlesAndValues
+    data.addRow([e[0],e[1]])
+
+  data
+
+populateColumnChart = (listOfTitlesAndValues, chartElement) ->
+  listOfTitlesAndValues = JSON.parse("[" + listOfTitlesAndValues  + "]")
+  data = new google.visualization.DataTable()
+
+  data.addColumn('string', 'Nom débiteur');
+  data.addColumn('number', 'Montant en €');
   for e in listOfTitlesAndValues
     data.addRow([e[0],e[1]])
 

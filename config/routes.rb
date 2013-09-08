@@ -4,10 +4,12 @@ Fidette::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
 
-  match '/mystatistics' => 'users#statistics', :via => 'get'
-
+  resources :statistics, :only => [:appstatistics]
   resources :sessions
   resources :users
+
+  match '/mystatistics' => 'users#statistics', :via => 'get'
+  match '/appstatistics' => 'statistics#appstatistics', :via => 'get'
 
   root :to => 'home#index'
 
