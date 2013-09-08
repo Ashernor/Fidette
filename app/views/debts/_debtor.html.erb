@@ -19,16 +19,16 @@
         <td><%= debt.title %></td>
         <td><%= debt.body %></td>
         <td><%= show_in_euro(debt.value) %></td>
-        <td><%= debt.date %></td>
+        <td><%= I18n.l debt.date %></td>
         <td><%= debt.creditor.first_name %> <%= debt.creditor.last_name %></td>
         <td>
           <%= link_to t('.edit', :default => "Editer"),
                       edit_debt_path(debt, type:"debt"), :class => 'btn btn-mini'%>
-          <!--<%= link_to t('.edit', :default => "Payer" ),
-                      solve_debt_path(debt),
-                      :method => :put,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Êtes-vous sûr d\'avoir payé cette dette ?')) },
-                      :class => 'btn btn-mini' %>-->
+          <%= link_to t('.edit', :default => "J'ai payé" ),
+                      warn_creditor_debt_path(debt),
+                      :method => :get,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => "Êtes-vous sûr d'avoir payé cette dette ? Nous allons envoyer un email au créancier afin qu\il confirme que la dette a été payée")) },
+                      :class => 'btn btn-mini' %>
         </td>
       </tr>
   <% end %>
@@ -66,7 +66,7 @@
         <td><%= debt.title %></td>
         <td><%= debt.body %></td>
         <td><%= show_in_euro(debt.value) %></td>
-        <td><%= debt.date %></td>
+        <td><%= I18n.l debt.date %></td>
         <td><%= debt.creditor.first_name %> <%= debt.creditor.last_name %></td>
       </tr>
   <% end %>
@@ -82,3 +82,4 @@
   </tr>
   </tfoot>
 </table>
+<%= paginate @old_debts %>

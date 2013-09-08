@@ -8,8 +8,8 @@ class DebtsController < ApplicationController
   def index
     @debts = Debt.unpaid.where("debtor_id = ?", current_user.id).order("creditor_id")
     @credits = Debt.unpaid.where("creditor_id = ?", current_user.id).order("debtor_id")
-    @old_debts = Debt.paid.where("debtor_id = ?", current_user.id)
-    @old_credits = Debt.paid.where("creditor_id = ?", current_user.id)
+    @old_debts = Debt.paid.where("debtor_id = ?", current_user.id).page params[:page]
+    @old_credits = Debt.paid.where("creditor_id = ?", current_user.id).page params[:page]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @debts }
@@ -37,6 +37,8 @@ class DebtsController < ApplicationController
     @debt = Debt.new(params[:debt])
     respond_to do |format|
       if @debt.save
+        UserMailer.new_debt_email(@debt.debtor.email, @debt.debtor.first_name, @debt.value).deliver unless @debt.debtor_id == current_user.id
+        UserMailer.new_credit_email(@debt.creditor.email, @debt.creditor.first_name, @debt.value).deliver unless @debt.creditor_id == current_user.id
         format.html {
           if @debt.debtor_id == current_user.id
             redirect_to debts_path(type:"debt")
@@ -102,6 +104,7 @@ class DebtsController < ApplicationController
     respond_to do |format|
       if @debt.update_attributes(:is_paid=>true)
         format.html {
+          UserMailer.warn_debtor_email(@debt.debtor.email, @debt.creditor.first_name, @debt.value, @debt.title).deliver
           if @debt.debtor_id == current_user.id
             redirect_to debts_path(type:"debt")
             flash[:notice] = 'La dette a bien été soldée.'
@@ -120,6 +123,18 @@ class DebtsController < ApplicationController
 
   def set_debt
     @debt = Debt.where("debtor_id = #{current_user.id} OR creditor_id = #{current_user.id}").find(params[:id])
+  end
+
+  def warn_creditor
+    @debt = Debt.find(params[:id])
+    respond_to do |format|
+      format.html {
+        UserMailer.warn_creditor_email(@debt.debtor.email, @debt.debtor.first_name, @debt.value, @debt.title).deliver
+        redirect_to debts_path(type:"debt")
+        flash[:notice] = 'Le créancier a bien été prévenu'
+      }
+    end
+
   end
 
 end

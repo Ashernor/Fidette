@@ -1,3 +1,4 @@
+# encoding: utf-8
 module ApplicationHelper
   def twitterized_type(type)
     case type
@@ -16,6 +17,10 @@ module ApplicationHelper
 
   def show_in_euro(amount)
     number_to_currency(amount, :locale => :fr, :unit => "&euro;", :separator => ",", :delimiter => " ", :format => "%n%u")
+  end
+
+  def show_in_euro_utf(amount)
+    number_to_currency(amount, :locale => :fr, :unit => "€", :separator => ",", :delimiter => " ", :format => "%n%u")
   end
 
 end

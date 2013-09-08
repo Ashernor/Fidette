@@ -16,6 +16,7 @@ Fidette::Application.routes.draw do
   resources :debts do
     member do
       put :solve
+      get :warn_creditor
     end
   end
 

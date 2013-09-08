@@ -20,7 +20,7 @@
         <td><%= debt.title %></td>
         <td><%= debt.body %></td>
         <td><%= show_in_euro(debt.value) %></td>
-        <td><%= debt.date %></td>
+        <td><%= I18n.l debt.date %></td>
         <td><%= debt.debtor.first_name %> <%= debt.debtor.last_name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -73,7 +73,7 @@
         <td><%= debt.title %></td>
         <td><%= debt.body %></td>
         <td><%= show_in_euro(debt.value) %></td>
-        <td><%= debt.date %></td>
+        <td><%= I18n.l debt.date %></td>
         <td><%= debt.debtor.first_name %> <%= debt.debtor.last_name %></td>
       </tr>
   <% end %>
@@ -89,3 +89,4 @@
     </tr>
   </tfoot>
 </table>
+<%= paginate @old_credits %>

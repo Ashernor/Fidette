@@ -1,4 +1,7 @@
 fr:
+  date:
+    formats:
+      default: "%d/%m/%Y"
   layout:
     loading: "Chargement"
   activerecord:
@@ -44,3 +47,10 @@ fr:
       debt:
         value: "Valeur"
         title: "Surnom"
+  views:
+    pagination:
+      first: "&laquo; Première"
+      last: "Dernière &raquo;"
+      previous: "&lsaquo; Précédente"
+      next: "Suivante &rsaquo;"
+      truncate: "..."
