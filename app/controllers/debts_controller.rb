@@ -37,8 +37,8 @@ class DebtsController < ApplicationController
     @debt = Debt.new(params[:debt])
     respond_to do |format|
       if @debt.save
-        UserMailer.new_debt_email(@debt.debtor.email, @debt.debtor.first_name, @debt.value).deliver unless @debt.debtor_id == current_user.id
-        UserMailer.new_credit_email(@debt.creditor.email, @debt.creditor.first_name, @debt.value).deliver unless @debt.creditor_id == current_user.id
+        UserMailer.new_debt_email(@debt.debtor.email, @debt.creditor.first_name, @debt.value).deliver unless @debt.debtor_id == current_user.id
+        UserMailer.new_credit_email(@debt.creditor.email, @debt.debtor.first_name, @debt.value).deliver unless @debt.creditor_id == current_user.id
         format.html {
           if @debt.debtor_id == current_user.id
             redirect_to debts_path(type:"debt")
